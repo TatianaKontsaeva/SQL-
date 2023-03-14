@@ -1,0 +1,26 @@
+Составить следующие запросы:
+Выбрать 5 книг, автором которых является Павел Васильев
+SELECT u.id, u.first_name, u.last_name, p.name, p.author_id FROM authors u JOIN books p ON u.id = p.author_id WHERE u.first_name = 'Павел' AND u.last_name = 'Васильев' LIMIT 5
+
+Выбрать книги жанра «Пьеса», опубликованные ранее 2000 года
+SELECT u.name, p.name FROM books u JOIN genres p ON u.genre_id = p.id WHERE p.name = 'Пьеса' AND u.published < 2000
+
+Найдите автора, книги которого в библиотеке отсутствуют
+SELECT * FROM authors where id not IN (SELECT author_id FROM books);
+
+Выберите из списка книг те, у которых в названии встречается «Русск»
+SELECT * FROM `books` WHERE `name` LIKE '%Русск%'
+
+Используя оператор UNION, добавьте к списку из п.4 книги, у которых в названии встречается «Франц». 
+SELECT * FROM `books` WHERE `name` LIKE '%Русск%' UNION SELECT * FROM `books` WHERE `name` LIKE '%Франц%'
+
+Отсортируйте полученные книги в алфавитном порядке.
+SELECT * FROM `books` WHERE `name` LIKE '%Русск%' UNION SELECT * FROM `books` WHERE `name` LIKE '%Франц%' ORDER BY name ASC
+
+
+
+
+
+
+
+   
